@@ -16,8 +16,8 @@ export function fetchTwitterInfo(username) {
 	})
 	return new Promise((resolve, reject)=> {
 		jkol36.get('users/show', {screen_name: username}, function(error, response){
-			let friendsCount = response.friends_count
-			let followersCount = response.followers_count
+			let friendsCount = response.friends_count ? response.friends_count: 0
+			let followersCount = response.followers_count ? response.followers_count: 0
 			resolve({friendsCount, followersCount, ratio:friendsCount/followersCount})
 		})
 	})
